@@ -1,0 +1,577 @@
+@import "./reset.css";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:wght@400;500;700&display=swap');
+
+
+/* 
+font-family: "DM Sans", sans-serif; 
+font-family: "Poppins", sans-serif;
+*/
+
+/* *{
+    border: 1px solid red;
+} */
+
+:root {
+    --blackpure: #000;
+    --black: #171718;
+    --black-border: #26292D;
+    --white: #fff;
+    --purple: #5C62EC;
+    --orange: orange;
+
+    --text-color: var(--black);
+
+
+    --dark-dg: var(--black);
+    --dark-border: var(--black-border);
+    --header-text: var(--white);
+    --accent: var(--orange);
+
+    /* Light mode */
+    --page-bg: var(--white);
+    --text-color: var(--black);
+
+    --title-1: var(--accent);
+
+    --project-card-bg: var(--white);
+    --project-card-text: var(--black);
+    --box-shadow: 0px 5px 35px rgba(0, 0, 0, 0.25);
+}
+
+.dark {
+    /* Dark mode */
+    --page-bg: #252526;
+    --text-color: var(--white);
+
+    --title-1: var(--white);
+
+    --project-card-bg: var(--black);
+    --project-card-text: var(--white);
+    --box-shadow: 0px 5px 35px rgba(0, 0, 0, 0.8);
+}
+
+/* настройки по умолчанию */
+html, body{
+    /* чтобы подвал был внизу страницы */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    font-family: "DM Sans", sans-serif; 
+    letter-spacing: -0.5px; /* межбуквенное расстояние в тексте */
+
+    /* Light mode */
+    background-color: var(--page-bg);
+    color: var(--text-color);
+}
+
+
+
+/* General */
+
+.container{
+    margin: 0 auto; /* делаем контейнер по центру */ 
+    padding: 0 15px; /* чтобы оставались поля при изменении размеров стриницы */ 
+    max-width: 1200px;
+}
+
+.none{
+    display: none !important;
+}
+
+.section{
+    padding: 70px 0;
+}
+
+.title-1{
+    margin-bottom: 60px;
+
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--title-1);
+    text-align: center; /* горизонтальное выравнивание текста внутри элемента */
+}
+
+.title-2{
+    margin-bottom: 20px;
+
+    font-size: 40px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+
+
+/* Nav */
+
+.nav{
+    padding: 20px 0; /* 20 за сверху и снизу, 0 за справа и слева */
+    border-bottom: 1px solid var(--black-border);
+    background-color: var(--dark-dg);
+    color: var(--header-text);
+    letter-spacing: normal; /* межбуквенное расстояние в тексте */
+}
+/*  */
+.nav-row{
+    display: flex; /* в один ряд*/
+    justify-content: flex-end; /* выравнивание всего по правому краю */
+    align-items: center; /* что бы и вертикально было по центру */
+    column-gap: 30px; /* отступ между текстом справа и слева */
+    row-gap: 20px; /* интервал между строчками */
+    flex-wrap: wrap; /* перехд на след строчку на телефоне */
+}
+
+/* работа с лого */
+.logo{ 
+    margin-right: auto; /* заполняет все свободное пространство справа перенося лого в лево */
+    color: var(--header-text);
+    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+}
+ 
+/* работа с strong */
+.logo strong{ 
+    font-weight: 700;
+}
+
+.nav-list{
+    display: flex; 
+    flex-wrap: wrap; /* в одну строчку */
+    row-gap: 10px;
+    align-items: center; /* что бы и вертикально было по центру */
+    column-gap: 40px; /* отступ между словаим */
+    font-size: 16PX; /* шрифт */
+    font-weight: 550; /* Medium */
+    font-family: "Poppins", sans-serif;
+}
+
+.nav-list__link{
+    color: var(--header-text);
+    transition: opacity 0.2s ease-in; /* плавная смена цвета кнопки */
+}
+
+/* когда кнопка под курсором */
+.nav-list__link:hover{
+    opacity: 0.8; /* прозрачность элемента */
+}
+
+.nav-list__link--active{
+    position: relative; /* определяет позиционирование элемента, это то, к чему мы привязываемся */
+}
+
+.nav-list__link--active::before{
+    content: "";
+
+
+    position: absolute; /* позиционирование элемента относительно того, к чему мы привязались */
+    left: 0;
+    top: 100%; 
+
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--accent);
+}
+
+
+
+/* Dark mode btn */
+
+.dark-mode-btn {
+    order: 9; /* порядок следования */
+    position: relative;
+    display: flex;
+    justify-content: space-between; /* выравнивает элементы по горизонтали с равным пространством между ними */
+    width: 51px;
+    height: 26px;
+    padding: 5px; /* внутренний отступ элемента */
+
+    border-radius: 50px;
+    background-color: #272727;
+}
+
+.dark-mode-btn::before {
+    content: "";
+    
+    position: absolute;
+    top: 1px; /* расстояние от верхней границы родительского элемента */
+    left: 1px;
+
+
+    display: block; /* отображает псевдоэлемент как блочный элемент, что дает гибкость работы с ним */ 
+    width: 24px;
+    height: 24px;
+
+
+    border-radius: 50%;
+    background-color: var(--white);
+
+    transition: left 0.2s ease-in;
+}
+
+.dark-mode-btn--active::before {
+    left: 26px; /* устанавливает новое положение псевдоэлемента, когда кнопка активна */
+}
+
+.dark-mode-btn__icon {
+    position: relative; 
+    z-index: 9; /* задает порядок слоя элемента относительно других элементов */
+}
+
+
+/* Header */
+
+.header{
+    padding: 40px 0;
+    min-height: 695px;
+
+    display: flex; /* в одну строчку */
+    justify-content: center; /* по горизонтали делаем блок в центре*/
+    align-items: center; /* по вертикали */
+
+    background-color: var(--dark-dg);
+
+    background-image: url('./../img/header-dg.png'); 
+    background-repeat: no-repeat;
+    background-size: auto; /* размер */
+    background-position: center center; /* позиция изображения */
+
+
+
+    color: var(--header-text);
+    text-align: center; /* выравнивание текста по центру */
+
+}
+
+.header__wrapper{
+    padding: 0 15px;
+    max-width: 660px;
+}
+
+.header__title{
+    margin-bottom: 20px; /* отступ от заголовка */
+    font-size: 40px;     /* размер текста */
+    font-weight: 700;    /* Bold - жирный */
+    line-height: 1.4;    /* высота строки */
+}
+
+.header__title strong{
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.header__title em{
+    font-style: normal;
+    color: var(--accent);
+
+}
+
+.header__text{
+    margin-bottom: 40px;
+    font-size: 18px;
+    line-height: 1.333;
+}
+
+/* интервал, если будет несколько абзацев */
+.header__text p+p{
+    margin-top: 0.5 em;
+}
+
+
+
+/* Кнопка */
+
+.btn{
+    display: inline-block;
+    height: 48px;
+    padding: 12px 28px; /* отступы краев кнопки от текста в центре */
+
+    border-radius: 5px; /* радиус скругления кнокпи */
+    background-color: var(--accent); /* цвет кнопки */
+    color: var(--white); /* цвет текста */
+    letter-spacing: 0.15px;  /* межбуквенное расстояние в тексте */
+    font-size: 17px; /* размер текста */
+    font-weight: 500; /* Medium */
+
+    transition: opacity 0.2s ease-in; /* плавная смена цвета кнопки */
+}
+
+/* когда кнопка под курсором */
+.btn:hover{
+    opacity: 0.7; /* прозрачность элемента */
+}
+
+/* анимация при нажатии */
+.btn:active{
+    position: relative; /* устанавливает исходное местоположение */
+    top: 1px; /* сдвигает элемент на 1 пиксель вниз относительно его исходного местоположения */
+}
+
+
+
+/* Btn outline */
+
+.btn-outline{
+    display: flex;
+    column-gap: 10px; /* горизонтальный зазор между элементами */
+    align-items: center; /* выравнивает элементы по центру по вертикали */
+
+    height: 48px; /* высота кнопки */
+    padding: 12px 20px; /* внутренний отступ кнопки */
+    
+    border-radius: 5px; /* скругление углов кнопки */
+    border: 1px solid var(--blackpure); /* цвет границы кнопки */
+    background-color: var(--white);
+    color: var(--blackpure); /* цвет текста кнопки */
+
+    transition: opacity 0.2s ease-in; /* плавная смена цвета кнопки */
+}
+
+.btn-outline:hover{
+    opacity: 0.7; /* прозрачность элемента */
+}
+
+/* анимация при нажатии */
+.btn-outline:active{
+    position: relative; /* устанавливает исходное местоположение */
+    top: 1px; /* сдвигает элемент на 1 пиксель вниз относительно его исходного местоположения */
+}
+
+
+
+/* Projects */
+
+.projects{
+    display: flex; /* в одну строчку */
+    flex-wrap: wrap; /* позволяет элементам переноситься на следующую строку, если не помещаются в текущей строке */
+    justify-content: center; /* выравниваться по центру вдоль главной оси контейнера */
+    column-gap: 30px; /* задает горизонтальное расстояние между элементами */
+    row-gap: 30px; /* задает вертикальное расстояние между строками элементов */
+
+}
+
+.project{
+    max-width: 370px; /* адаптивный размер */
+    background-color: var(--project-card-bg);
+    box-shadow: var(--box-shadow); /* тень */
+    border-radius: 10px; /* скругление углов */
+
+}
+
+.project:hover{
+    opacity: 0.8; /* прозрачность элемента */
+}
+
+.project__img{
+    border-radius: 10px; /* скругление углов */
+}
+
+.project__title{
+    padding: 15px 20px 25px; /* отступ свеерху, слева/справа, снизу */
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.3;
+    color: var(--project-card-text);
+}
+
+
+
+/* Project details */
+
+.project-details{
+    margin: 0 auto; /* устанавливает автоматический отступ сверху и снизу, а также выравнивает по центру по горизонтали */
+    max-width: 865px; /* задает максимальную ширину контейнера */
+
+    display: flex;
+    flex-direction: column; /* устанавливает направление главной оси контейнера в столбец */
+    align-items: center; /* выравнивает элементы по центру по вертикали */
+
+    text-align: center; /* выравнивает текст по центру горизонтально */
+}
+
+.project-details__cover{
+    max-width: 100%;
+    margin-bottom: 40px;
+
+    box-shadow: 0px 5px 35px rgba(0, 0, 0, 0.25); /* тень */
+    border-radius: 10px; /* скругление углов */
+}
+
+.project-details__desc{
+    margin-bottom: 30px;
+    text-align: left;
+
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.3;
+}
+
+.project-details__desc strong{
+
+    text-align: left;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.3;
+}
+
+.project-btn {
+    display: flex; 
+    flex-wrap: wrap; /* в одну строчку */
+    column-gap: 50px; /* горизонтальный зазор между элементами */
+}
+
+
+
+/* Content list */
+
+.content-list{
+    margin: 0 auto;
+    max-width: 570px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 40px;
+    text-align: center;
+}
+
+.content-list a {
+    color: var(--accent);
+}
+
+.content-list__item{
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.content-list__item P + p{
+    margin-top: 0.5em;
+}
+
+.content-list__item strong {
+    font-weight: 750;
+}
+
+
+/* Footer */
+
+.footer{
+    margin-top: auto;
+    padding: 60px 0px 50px; /* отступ свеерху, слева/справа, снизу */
+    background-color: var(--dark-dg);
+    color: var(--header-text);
+    border-top: 1px solid var(--black-border);
+}
+
+.footer__wrapper{
+    display: flex;
+    flex-direction: column; /* устанавливает направление главной оси контейнера в столбец */
+    align-items: center; /* центр по горизонтали */
+    row-gap: 27px; /* вертикальный зазор между строками элементов */
+}
+
+.social{
+    display: flex;
+    column-gap: 30px; /* горизонтальный зазор между иконками */
+    align-items: center; /* выравнивает элементы по центру по горизонтали */
+}
+
+.copyright{
+    font-size: 16px;
+}
+
+/* интервал, если будет несколько абзацев */
+.copyright p + p{
+    margin-top: 0.5em; /* отступ сверху */
+}
+
+
+
+
+/* адаптация для тел */
+
+@media (max-width: 620px){
+
+    /* Header */
+
+    .header {
+        min-height: unset;
+    }
+
+    .header__title{
+        font-size: 30;
+    }
+
+    .header__title strong {
+        font-size: 40px;
+    }
+
+    /* Nav */
+
+    .nav-row{
+        justify-content: space-between;
+    }
+
+    .dark-mode-btn{
+        order: 0;
+    }
+
+    /* General */
+
+    .section {
+        padding: 40px 0;
+    }
+
+    .title-1 {
+        margin-bottom: 30px;
+        font-size: 40px;
+    }
+
+    .title-2 {
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
+    /* Projects */
+
+    .project__title {
+        font-size: 22px;
+    }
+
+    /* Project page */
+
+    .project-details__desc {
+        margin-bottom: 20px;
+        font-size: 22px;
+    }
+
+    /* Content List */
+    
+    .content-list {
+        row-gap: 20px;
+    }
+
+    .content-list__item {
+        font-size: 16px;
+    }
+
+    /* Footer */
+
+    .footer {
+        padding: 40px 0 30px;
+    }
+
+    .footer__wrapper {
+        row-gap: 20px;
+    }
+
+    /* Social */
+
+    .social {
+        column-gap: 20px;
+    }
+
+    .social__item {
+        width: 28px;
+    }
+}
