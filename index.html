@@ -35,7 +35,12 @@
                 <div class="header__text">
                     <!-- <p>загрузите фотографию текста</p> -->
                 </div>
-                <a href="#!" class="btn">Загрузить</a>
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <label for="file" class="btn">Выбрать изображение</label>
+                    <input type="file" style="display: none;" id="file" name="file" onchange="uploadFile()">
+                    </form>
+                <h1 class="title-1" id="recstatus" style="visibility: hidden;">Распознанный текст:</h1>
+                <p id="recognized"></p>
             </div>
     </header>
 
@@ -87,6 +92,6 @@
     </footer>
     
     <script src="./js/main.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
 </body>
 </html>

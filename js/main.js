@@ -1,3 +1,5 @@
+
+
 const btnDarkMode = document.querySelector(".dark-mode-btn"); //Эта строка получает ссылку на элемент кнопки с классом dark-mode-btn и сохраняет ее в переменной btnDarkMode
 
 // проверка темной темы в localStorage
@@ -25,4 +27,28 @@ btnDarkMode.onclick  = function () {   //Этот код добавляет об
         localStorage.setItem('darkMode', 'light')
     }
 
+}
+function uploadFile() {
+    const input = document.getElementById('file');
+    const file = input.files[0];
+    if(file) {
+        let formData = new FormData();
+        formData.append('file', file);
+
+        axios.post('http://127.0.0.1:8000/1', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(function(response) {
+            console.log('Файл успешно загружен:', response);
+            document.getElementById('recstatus').style.visibility='visible'
+            document.getElementById('recognized').textContent=response.data['message']
+        })
+        .catch(function(error) {
+            console.error('Произошла ошибка при загрузке файла:', error);
+        });
+    } else {
+        console.log('Файл не выбран');
+    }
 }
