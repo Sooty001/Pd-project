@@ -6,14 +6,18 @@ const btnDarkMode = document.querySelector(".dark-mode-btn"); //Эта стро�
 if (localStorage.getItem('darkMode') === 'dark') {
     btnDarkMode.classList.add("dark-mode-btn--active");
     document.body.classList.add("dark");
-} 
+    console.log(12);
+}
+else if (localStorage.getItem('darkMode')===null){
+    if(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        btnDarkMode.classList.add("dark-mode-btn--active");
+        document.body.classList.add("dark");
+    }
+    
+}
 
 
 // Проверка темной темы на уровне систменых настроек
-if(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    btnDarkMode.classList.add("dark-mode-btn--active");
-    document.body.classList.add("dark");
-}
 
 
 // Включение ночного режима по кнопке
