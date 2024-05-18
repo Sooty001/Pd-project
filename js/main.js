@@ -44,6 +44,11 @@ function uploadFile() {
             console.log('Файл успешно загружен:', response);
             document.getElementById('recstatus').style.visibility='visible'
             document.getElementById('recognized').textContent=response.data['message']
+            const downloadLink = document.getElementById('download_link')
+            downloadLink.href = 'http://127.0.0.1:8000/download_document'
+            downloadLink.textContent = `Скачать ${response.data['document_name']}`
+            downloadLink.style.visibility = 'visible'
+            
         })
         .catch(function(error) {
             console.error('Произошла ошибка при загрузке файла:', error);
