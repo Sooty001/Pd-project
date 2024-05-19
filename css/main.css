@@ -101,6 +101,15 @@ html, body{
     font-weight: 700;
 }
 
+.title-3{
+    margin-bottom: 20px;
+    margin-top: 40px;
+
+    font-size: 55px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
 
 
 /* Nav */
@@ -299,7 +308,7 @@ html, body{
 
 /* когда кнопка под курсором */
 .btn:hover{
-    opacity: 0.7; /* прозрачность элемента */
+    opacity: 0.8; /* прозрачность элемента */
 }
 
 /* анимация при нажатии */
@@ -334,6 +343,40 @@ html, body{
 
 /* анимация при нажатии */
 .btn-outline:active{
+    position: relative; /* устанавливает исходное местоположение */
+    top: 1px; /* сдвигает элемент на 1 пиксель вниз относительно его исходного местоположения */
+}
+
+
+
+/* Btn download-link */
+
+.download-link{
+    display: inline-block;
+    height: 48px;
+    width: 250px;
+    padding: 12px 28px; /* отступы краев кнопки от текста в центре */
+    margin: 0 auto; /* Центрирование по горизонтали */
+    margin-top: 40px;
+
+    border-radius: 5px; /* радиус скругления кнокпи */
+    background-color: var(--accent); /* цвет кнопки */
+    color: var(--white); /* цвет текста */
+    letter-spacing: 0.15px;  /* межбуквенное расстояние в тексте */
+    font-size: 17px; /* размер текста */
+    font-weight: 500; /* Medium */
+
+    transition: opacity 0.2s ease-in; /* плавная смена цвета кнопки */
+    visibility: hidden;
+}
+
+/* когда кнопка под курсором */
+.download-link:hover{
+    opacity: 0.8; /* прозрачность элемента */
+}
+
+/* анимация при нажатии */
+.download-link:active{
     position: relative; /* устанавливает исходное местоположение */
     top: 1px; /* сдвигает элемент на 1 пиксель вниз относительно его исходного местоположения */
 }
@@ -574,19 +617,4 @@ html, body{
     .social__item {
         width: 28px;
     }
-}
-.download-link{
-    color: red; 
-    text-decoration: none;
-    font-size: 20px ;
-    visibility: hidden;
-}
-.download-link:link, .download-link:visited, .download-link:hover, .download-link:active { 
-    color: red; 
-    text-decoration: none;
-    
-}
-.download-link:hover {
-    color: darkred; /* Затемненный красный при наведении */
-    text-decoration: underline; /* Добавляем подчеркивание при наведении */
 }
