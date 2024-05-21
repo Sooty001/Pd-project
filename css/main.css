@@ -72,7 +72,7 @@ html, body{
 .container{
     margin: 0 auto; /* делаем контейнер по центру */ 
     padding: 0 15px; /* чтобы оставались поля при изменении размеров стриницы */ 
-    max-width: 1200px;
+    max-width: 1600px;
 }
 
 .none{
